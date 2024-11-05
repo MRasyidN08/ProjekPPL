@@ -96,6 +96,7 @@ int main() {
                 customer(menu, ukuran, pilihan);
             } else if (pilihan == 0){
                cout << "Silahkan Lanjut ke menu pembayaran" << endl;
+               cout << "----------------------------------" << endl;
             }else {
                 cout << "Pilihan tidak valid, coba lagi." << endl;
             }
@@ -103,6 +104,7 @@ int main() {
     }
 
     tampilkanRincianPembelian(pembelian, jumlahPembelian);
+    cout << "----------------------------" << endl ;
     cout << "Total harga pesanan Anda: Rp" << totalHarga << endl;
     cout << "Apakah Anda ingin melanjutkan ke pembayaran? (y/n): ";
     cin >> konfirmasiPembayaran;

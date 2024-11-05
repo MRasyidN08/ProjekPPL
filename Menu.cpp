@@ -22,6 +22,7 @@ double prosesPembayaran(double totalHarga) {
     kembalian = bayar - totalHarga;
 
     if (bayar >= totalHarga) {
+        cout << "----------------------------------" << endl ;
         cout << "Pembayaran berhasil. Kembalian: Rp" << kembalian << endl;
         return kembalian;
     } else {
