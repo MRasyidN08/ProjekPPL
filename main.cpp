@@ -47,7 +47,7 @@ void customer(MenuItem menu[], int ukuran, int pilihan){
             cout << "Maaf stok tidak tersedia";
         } else{
             menu[pilihan - 1].stok -= jumlahItem;
-            long double hargaTotalItem = menu[pilihan - 1].harga * jumlahItem;
+            double hargaTotalItem = menu[pilihan - 1].harga * jumlahItem;
             totalHarga += menu[pilihan - 1].harga * jumlahItem;
             
             pembelian[jumlahPembelian] = {menu[pilihan - 1].nama, jumlahItem, hargaTotalItem};
@@ -65,7 +65,6 @@ int main() {
     isiMenu(menu, ukuran); // Memanggil fungsi untuk mengisi menu
     GetStock(menu); 
     char konfirmasiPembayaran, orang;
-    bool konfirm;
 
     start:
     cout << "Customer atau Pegawai? (c/p)";
