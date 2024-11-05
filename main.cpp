@@ -7,7 +7,9 @@
 using namespace std;
 
 int jumlahItem;
-double totalHarga;
+long double totalHarga;
+PembelianItem pembelian[10];
+int jumlahPembelian = 0;
 
 int mintaPilihan() {
     int pilihan;
@@ -45,7 +47,11 @@ void customer(MenuItem menu[], int ukuran, int pilihan){
             cout << "Maaf stok tidak tersedia";
         } else{
             menu[pilihan - 1].stok -= jumlahItem;
+            long double hargaTotalItem = menu[pilihan - 1].harga * jumlahItem;
             totalHarga += menu[pilihan - 1].harga * jumlahItem;
+            
+            pembelian[jumlahPembelian] = {menu[pilihan - 1].nama, jumlahItem, hargaTotalItem};
+            jumlahPembelian++;
         }
     } else {
         cout << "Pilihan sedang habis stok, coba lagi." << endl;
@@ -97,13 +103,14 @@ int main() {
         } while (pilihan != 0);
     }
 
+    tampilkanRincianPembelian(pembelian, jumlahPembelian);
     cout << "Total harga pesanan Anda: Rp" << totalHarga << endl;
     cout << "Apakah Anda ingin melanjutkan ke pembayaran? (y/n): ";
     cin >> konfirmasiPembayaran;
 
     if (konfirmasiPembayaran == 'y' || konfirmasiPembayaran == 'Y') {
-        bool pembayaranBerhasil = prosesPembayaran(totalHarga);
-        if (pembayaranBerhasil) {
+        long double pembayaranBerhasil = prosesPembayaran(totalHarga);
+        if (pembayaranBerhasil >= 0) {
             cout << "Pesanan Anda berhasil diproses. Terima kasih!" << endl;
         } else {
             cout << "Pesanan dibatalkan karena pembayaran gagal." << endl;
