@@ -1,6 +1,7 @@
 // main.cpp
 #include <iostream>
 #include <limits>
+#include <iomanip>
 #include "Heading.hpp"
 
 using namespace std;
@@ -18,18 +19,17 @@ int mintaPilihan() {
             // Jika input tidak valid
             cin.clear(); // Menghapus status error dari cin
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Membuang input yang tidak valid
-            cout << "Input tidak valid, silakan masukkan angka." << endl;
+            cout << "Input tidak valid, silakan masukkan angka yang sesuai!!" << endl;
+            cout << "Pilih item dari menu (masukkan nomor item, 0 untuk selesai) : " ;
         }
     }
 }
 
 void pegawai(MenuItem menu[], int ukuran, int pilihan) {
     if (pilihan > 0 && pilihan <= ukuran){
-        cout << "Berapa banyak?";
+        cout << "Silahkan tambahkan jumlah stok menu! ";
         cin >> jumlahItem;
         menu[pilihan - 1].stok += jumlahItem;
-        cout << "Stok anda ada: ";
-        cout << menu[pilihan - 1].stok;
     } else if(pilihan == 0){
         cout << "Terima Kasih"<<endl;
     } else {
@@ -39,10 +39,10 @@ void pegawai(MenuItem menu[], int ukuran, int pilihan) {
 
 void customer(MenuItem menu[], int ukuran, int pilihan){
     if (menu[pilihan - 1].stok != 0){
-        cout << "Berapa banyak " << menu[pilihan - 1].nama << " yang ingin Anda pesan? ";
+        cout << "Sialahkan masukkan jumlah " << menu[pilihan - 1].nama << " yang ingin Anda pesan?!";
         cin >> jumlahItem;
         if (jumlahItem > menu[pilihan - 1].stok){
-            cout << "Stok kurang";
+            cout << "Maaf stok tidak tersedia";
         } else{
             menu[pilihan - 1].stok -= jumlahItem;
             totalHarga += menu[pilihan - 1].harga * jumlahItem;
@@ -69,21 +69,29 @@ int main() {
     {
         do {
             tampilkanMenu(menu, ukuran);
-            cout << "Ingin menambah stok makanan apa? (masukkan nomor item, 0 untuk selesai):";
+            cout << "Pilih item dari menu (masukkan nomor item, 0 untuk selesai) : " ;
             pilihan = mintaPilihan();
-            pegawai(menu, ukuran, pilihan);
+            if (pilihan > 0 && pilihan <= ukuran) {
+                pegawai(menu, ukuran, pilihan);
+            } else if (pilihan == 0){
+               cout << "Terimakasih" << endl;
+            }else {
+                cout << "Pilihan tidak valid, coba lagi." << endl;
+            }
         } while (pilihan != 0);
-        cout << "Terima kasih";
         goto start;
     } else if (orang == 'c'){
         do {
+            cout << setw(40) <<  "------ Selamat Datang Di Mcdonald ------" << endl;
             tampilkanMenu(menu, ukuran);
             cout << "Pilih item dari menu (masukkan nomor item, 0 untuk selesai): ";
             pilihan = mintaPilihan();
             
             if (pilihan > 0 && pilihan <= ukuran) {
                 customer(menu, ukuran, pilihan);
-            } else {
+            } else if (pilihan == 0){
+               cout << "Silahkan Lanjut ke menu pembayaran" << endl;
+            }else {
                 cout << "Pilihan tidak valid, coba lagi." << endl;
             }
         } while (pilihan != 0);
