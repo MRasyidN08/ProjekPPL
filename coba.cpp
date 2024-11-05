@@ -17,12 +17,14 @@ void tampilkanMenu(MenuItem menu[], int ukuran) {
 
 bool prosesPembayaran(double totalHarga) {
     double bayar;
+    double kembalian;
     cout << "Total harga: Rp" << totalHarga << endl;
     cout << "Masukkan jumlah pembayaran: Rp";
     cin >> bayar;
 
     if (bayar >= totalHarga) {
-        cout << "Pembayaran berhasil. Kembalian: Rp" << bayar - totalHarga << endl;
+        kembalian = bayar - totalHarga;
+        cout << "Pembayaran berhasil. Kembalian: Rp" << kembalian << endl;
         return true;
     } else {
         cout << "Pembayaran gagal. Jumlah yang dibayarkan kurang." << endl;

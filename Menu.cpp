@@ -11,7 +11,7 @@ void tampilkanMenu(MenuItem menu[], int ukuran) {
         cout << i + 1 << ". " << menu[i].nama << " - Rp" << menu[i].harga << " Stok tersisa: "<< menu[i].stok << endl;
     }
 }
-
+// jadikan file pembayaran
 bool prosesPembayaran(double totalHarga) {
     double bayar;
     cout << "Total harga: Rp" << totalHarga << endl;
