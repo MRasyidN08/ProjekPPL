@@ -44,4 +44,10 @@ void GetStock(MenuItem menu[]){
     menu[0].stok = 10;
     menu[1].stok = 10;
     menu[2].stok = 10;
+    menu[3].stok = 10;
+    menu[4].stok = 10;
+    menu[5].stok = 10;
+    menu[6].stok = 10;
+    menu[7].stok = 10;
+    menu[8].stok = 10;
 }
