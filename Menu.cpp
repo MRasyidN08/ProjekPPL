@@ -33,3 +33,9 @@ void isiMenu(MenuItem menu[], int& ukuran) {
     menu[2] = {"Minuman Soda", 10000};
     ukuran = 3; // Mengatur ukuran menu
 }
+
+void GetStock(MenuItem menu[]){
+    menu[0].stok = 10;
+    menu[1].stok = 10;
+    menu[2].stok = 10;
+}

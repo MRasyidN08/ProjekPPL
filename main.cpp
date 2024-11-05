@@ -18,12 +18,18 @@ int main() {
     cin >> pilihan;
 
     while (pilihan != 0) {
-        if (pilihan > 0 && pilihan <= ukuran) {
-            cout << "Berapa banyak " << menu[pilihan - 1].nama << " yang ingin Anda pesan? ";
-            cin >> jumlahItem;
-            totalHarga += menu[pilihan - 1].harga * jumlahItem;
+        if (menu[pilihan - 1].stok != 0){
+            if (pilihan > 0 && pilihan <= ukuran) {
+                cout << "Berapa banyak " << menu[pilihan - 1].nama << " yang ingin Anda pesan? ";
+                cin >> jumlahItem;
+                menu[pilihan - 1].stok -= jumlahItem;
+                totalHarga += menu[pilihan - 1].harga * jumlahItem;
+                cout << menu[pilihan - 1].stok;
+            } else {
+                cout << "Pilihan tidak valid, coba lagi." << endl;
+            }
         } else {
-            cout << "Pilihan tidak valid, coba lagi." << endl;
+            cout << "Pilihan sedang habis stok, coba lagi." << endl;
         }
         cout << "Pilih item dari menu (masukkan nomor item, 0 untuk selesai): ";
         cin >> pilihan;
