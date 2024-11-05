@@ -37,7 +37,7 @@ void isiMenu(MenuItem menu[], int& ukuran) {
     menu[6] = {"Panas 1 (Ayam,Nasi,Minum)", 39000};
     menu[7] = {"Pamer 5 (Ayam 5,Nasi 5,Minum 5)", 132500};
     menu[8] = {"Pamer 7 (Ayam 7,Nasi 7,Minum 7)", 185000};
-    ukuran = 100; // Mengatur ukuran menu
+    ukuran = 8; // Mengatur ukuran menu
 }
 
 void GetStock(MenuItem menu[]){
