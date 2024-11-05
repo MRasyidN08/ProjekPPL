@@ -15,7 +15,7 @@ void tampilkanMenu(MenuItem menu[], int ukuran) {
 double prosesPembayaran(double totalHarga) {
     double bayar;
     double kembalian;
-    cout << "Total harga: Rp" << totalHarga << endl;
+    cout << "Total harga: Rp" << fixed << setprecision(2) << totalHarga << endl;
     cout << "Masukkan jumlah pembayaran: Rp";
     cin >> bayar;
 
@@ -23,7 +23,7 @@ double prosesPembayaran(double totalHarga) {
 
     if (bayar >= totalHarga) {
         cout << "----------------------------------" << endl ;
-        cout << "Pembayaran berhasil. Kembalian: Rp" << kembalian << endl;
+        cout << "Pembayaran berhasil. Kembalian: Rp" << fixed << setprecision(2) << kembalian << endl;
         return kembalian;
     } else {
         cout << "Pembayaran gagal. Jumlah yang dibayarkan kurang." << endl;
