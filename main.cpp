@@ -44,7 +44,7 @@ void customer(MenuItem menu[], int ukuran, int pilihan){
         cout << "Sialahkan masukkan jumlah " << menu[pilihan - 1].nama << " yang ingin Anda pesan?!";
         cin >> jumlahItem;
         if (jumlahItem > menu[pilihan - 1].stok){
-            cout << "Maaf stok tidak tersedia";
+            cout << "Maaf stok tidak tersedia" << endl;
         } else{
             menu[pilihan - 1].stok -= jumlahItem;
             double hargaTotalItem = menu[pilihan - 1].harga * jumlahItem;
