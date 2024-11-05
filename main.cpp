@@ -7,7 +7,7 @@
 using namespace std;
 
 int jumlahItem;
-long double totalHarga;
+double totalHarga;
 PembelianItem pembelian[10];
 int jumlahPembelian = 0;
 
