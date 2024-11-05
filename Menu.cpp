@@ -1,11 +1,13 @@
 // Menu.cpp
 #include <iostream>
+#include <iomanip>
 #include "Heading.hpp"
 
 using namespace std;
 
 void tampilkanMenu(MenuItem menu[], int ukuran) {
-    cout << "---- Menu ----" << endl;
+    cout << setw(40) <<  "------ Selamat Datang Di Mcdonald ------" << endl;
+    cout << setw(28) << "------ Menu ------" << endl;
     for (int i = 0; i < ukuran; i++) {
         cout << i + 1 << ". " << menu[i].nama << " - Rp" << menu[i].harga << endl;
     }
