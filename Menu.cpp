@@ -11,19 +11,22 @@ void tampilkanMenu(MenuItem menu[], int ukuran) {
         cout << i + 1 << ". " << menu[i].nama << " - Rp" << menu[i].harga << " Stok tersisa: "<< menu[i].stok << endl;
     }
 }
-// jadikan file pembayaran
-bool prosesPembayaran(double totalHarga) {
+
+double prosesPembayaran(double totalHarga) {
     double bayar;
+    double kembalian;
     cout << "Total harga: Rp" << totalHarga << endl;
     cout << "Masukkan jumlah pembayaran: Rp";
     cin >> bayar;
 
+    kembalian = bayar - totalHarga;
+
     if (bayar >= totalHarga) {
-        cout << "Pembayaran berhasil. Kembalian: Rp" << bayar - totalHarga << endl;
-        return true;
+        cout << "Pembayaran berhasil. Kembalian: Rp" << kembalian << endl;
+        return kembalian;
     } else {
         cout << "Pembayaran gagal. Jumlah yang dibayarkan kurang." << endl;
-        return false;
+        return kembalian;
     }
 }
 
@@ -51,4 +54,13 @@ void GetStock(MenuItem menu[]){
     menu[6].stok = 10;
     menu[7].stok = 10;
     menu[8].stok = 10;
+}
+
+void tampilkanRincianPembelian(PembelianItem pembelian[], int jumlahPembelian) {
+    cout << "\nRincian Pembelian Anda:\n";
+    for (int i = 0; i < jumlahPembelian; i++) {
+        cout << i + 1 << ". " << pembelian[i].nama << " - Jumlah: " << pembelian[i].jumlah 
+             << " - Harga Total: Rp" << pembelian[i].hargaTotal << endl;
+    }
+    cout << endl;
 }
