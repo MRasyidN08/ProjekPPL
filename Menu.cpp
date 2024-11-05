@@ -9,7 +9,7 @@ void tampilkanMenu(MenuItem menu[], int ukuran) {
     cout << setw(40) <<  "------ Selamat Datang Di Mcdonald ------" << endl;
     cout << setw(28) << "------ Menu ------" << endl;
     for (int i = 0; i < ukuran; i++) {
-        cout << i + 1 << ". " << menu[i].nama << " - Rp" << menu[i].harga << endl;
+        cout << i + 1 << ". " << menu[i].nama << " - Rp" << menu[i].harga << " Stok tersisa: "<< menu[i].stok << endl;
     }
 }
 
@@ -30,7 +30,7 @@ bool prosesPembayaran(double totalHarga) {
 
 void isiMenu(MenuItem menu[], int& ukuran) {
     // Mengisi data menu
-    menu[0] = {"Burger (Big mac)", 42000};
+    menu[0] = {"Burger (Big mac)", 42000, menu[0].stok};
     menu[1] = {"Cheeseburger", 35000};
     menu[2] = {"Double Cheesburger", 41000};
     menu[3] = {"Chicken Burger", 33000};
