@@ -18,7 +18,7 @@ struct PembelianItem {
 };
 
 void tampilkanMenu(MenuItem menu[], int ukuran);
-long double prosesPembayaran(double totalHarga);
+double prosesPembayaran(double totalHarga);
 void isiMenu(MenuItem menu[], int& ukuran);
 void GetStock(MenuItem menu[]);
 void tampilkanRincianPembelian(PembelianItem pembelian[], int jumlahPembelian);

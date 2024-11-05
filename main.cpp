@@ -109,7 +109,7 @@ int main() {
     cin >> konfirmasiPembayaran;
 
     if (konfirmasiPembayaran == 'y' || konfirmasiPembayaran == 'Y') {
-        long double pembayaranBerhasil = prosesPembayaran(totalHarga);
+        double pembayaranBerhasil = prosesPembayaran(totalHarga);
         if (pembayaranBerhasil >= 0) {
             cout << "Pesanan Anda berhasil diproses. Terima kasih!" << endl;
         } else {

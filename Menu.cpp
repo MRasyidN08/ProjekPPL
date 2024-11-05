@@ -12,9 +12,9 @@ void tampilkanMenu(MenuItem menu[], int ukuran) {
     }
 }
 
-long double prosesPembayaran(double totalHarga) {
-    long double bayar;
-    long double kembalian;
+double prosesPembayaran(double totalHarga) {
+    double bayar;
+    double kembalian;
     cout << "Total harga: Rp" << totalHarga << endl;
     cout << "Masukkan jumlah pembayaran: Rp";
     cin >> bayar;
