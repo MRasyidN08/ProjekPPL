@@ -13,6 +13,36 @@ void tampilkanMenu(MenuItem menu[], int ukuran) {
     cout << "-------------------------------------------------------------------" << endl ; 
 }
 
+void penguranganKeranjang(PembelianItem pembelian[], int jumlahPembelian, MenuItem menu[]) {
+    int nomorItem, jumlahPengurangan;
+    cout << "Masukkan nomor item yang ingin dikurangi: ";
+    cin >> nomorItem;
+
+    if (nomorItem > 0 && nomorItem <= jumlahPembelian) {
+        PembelianItem &item = pembelian[nomorItem - 1];
+
+        cout << "Jumlah yang ingin dikurangi dari " << item.nama << ": ";
+        cin >> jumlahPengurangan;
+
+        if (jumlahPengurangan > 0 && jumlahPengurangan <= item.jumlah) {
+            menu[item.Id].stok += jumlahPengurangan;
+            item.jumlah -= jumlahPengurangan;
+            item.hargaTotal -= menu[item.Id].harga * jumlahPengurangan;
+            totalHarga -= menu[item.Id].harga * jumlahPengurangan;
+
+            if (item.jumlah == 0) {
+                for (int i = nomorItem - 1; i < jumlahPembelian - 1; i++) {
+                    pembelian[i] = pembelian[i + 1];
+                }
+                jumlahPembelian--;
+            }
+        } else {
+            cout << "Jumlah pengurangan tidak valid." << endl;
+        }
+    } else {
+        cout << "Nomor item tidak valid." << endl;
+    }
+}
 
 void isiMenu(MenuItem menu[], int& ukuran) {
     // Mengisi data menu

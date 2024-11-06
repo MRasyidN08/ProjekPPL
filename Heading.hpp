@@ -5,6 +5,8 @@
 #include <string>
 using namespace std;
 
+extern double totalHarga;
+
 struct MenuItem {
     string nama;
     double harga;
@@ -12,6 +14,7 @@ struct MenuItem {
 };
 
 struct PembelianItem {
+    int Id;
     string nama;
     int jumlah;
     double hargaTotal;
@@ -19,12 +22,14 @@ struct PembelianItem {
 };
 
 void tampilkanMenu(MenuItem menu[], int ukuran);
-double prosesPembayaran(double totalHarga);
 void isiMenu(MenuItem menu[], int& ukuran);
 void GetStock(MenuItem menu[]);
 void tampilkanRincianPembelian(PembelianItem pembelian[], int jumlahPembelian);
+void penguranganKeranjang(PembelianItem pembelian[], int jumlahPembelian, MenuItem menu[]);
 
 void pegawai(MenuItem menu[], int ukuran, int pilihan);
 void customer(MenuItem menu[], int ukuran, int pilihan);
+int mintaPilihan();
+
 
 #endif

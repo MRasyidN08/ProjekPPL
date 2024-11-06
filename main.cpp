@@ -1,4 +1,3 @@
-// main.cpp
 #include <iostream>
 #include <limits>
 #include <iomanip>
@@ -10,86 +9,85 @@ int jumlahItem;
 double totalHarga;
 PembelianItem pembelian[10];
 int jumlahPembelian = 0;
+int queue = 0;
+int i;
 
 int mintaPilihan() {
     int pilihan;
     while (true) {
         if (cin >> pilihan) {
-            // Jika input valid (integer)
             return pilihan;
         } else {
-            // Jika input tidak valid
-            cin.clear(); // Menghapus status error dari cin
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Membuang input yang tidak valid
-            cout << "Input tidak valid, silakan masukkan angka yang sesuai!!" << endl;
-            cout << "Pilih item dari menu (masukkan nomor item, 0 untuk selesai) : " ;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Input tidak valid, silakan masukkan angka yang sesuai!" << endl;
+            cout << "Pilih item dari menu (masukkan nomor item, 0 untuk selesai): ";
         }
     }
 }
 
-
 int main() {
-    MenuItem menu[10]; // Array untuk menu
-    int ukuran;
-    int pilihan;
-    isiMenu(menu, ukuran); // Memanggil fungsi untuk mengisi menu
-    GetStock(menu); 
-    char konfirmasiPembayaran, orang;
+    MenuItem menu[10];
+    int ukuran, pilihan, konfirmasiPembayaran;
+    isiMenu(menu, ukuran);
+    GetStock(menu);
+    char orang;
 
     start:
-    cout << "Customer atau Pegawai? (c/p)";
+    cout << "Customer atau Pegawai? (c/p): ";
     cin >> orang;
 
-    if (orang == 'p')
-    {
-        do {
-            tampilkanMenu(menu, ukuran);
-            cout << "Pilih item dari menu (masukkan nomor item, 0 untuk selesai) : " ;
-            pilihan = mintaPilihan();
-            if (pilihan > 0 && pilihan <= ukuran) {
-                pegawai(menu, ukuran, pilihan);
-            } else if (pilihan == 0){
-               cout << "Terimakasih" << endl;
-            }else {
-                cout << "Pilihan tidak valid, coba lagi." << endl;
-            }
-        } while (pilihan != 0);
+    if (orang == 'p') {
+        pegawai(menu, ukuran, pilihan);
         goto start;
-    } else if (orang == 'c'){
-        do {
-            cout << setw(40) <<  "------ Selamat Datang Di Mcdonald ------" << endl;
-            tampilkanMenu(menu, ukuran);
-            cout << "Pilih item dari menu (masukkan nomor item, 0 untuk selesai): ";
-            pilihan = mintaPilihan();
-            
-            if (pilihan > 0 && pilihan <= ukuran) {
-                customer(menu, ukuran, pilihan);
-            } else if (pilihan == 0){
-               cout << "----------------------------------" << endl;
-               cout << "Silahkan Lanjut ke menu pembayaran" << endl;
-            }else {
-                cout << "Pilihan tidak valid, coba lagi." << endl;
-            }
-        } while (pilihan != 0);
+    } else if (orang == 'c') {
+        ulang:
+        customer(menu, ukuran, pilihan);
+    } else {
+        cout << "Pilihan tidak valid." << endl;
+        return 0;
     }
-// ini sampai bawah masukin file pembayaran
+
     tampilkanRincianPembelian(pembelian, jumlahPembelian);
     cout << endl;
     cout << "Total harga pesanan Anda: Rp." << totalHarga << endl;
     cout << "------------------------------------------------" << endl;
-    cout << "Apakah Anda ingin melanjutkan ke pembayaran? (y/n): ";
-    cin >> konfirmasiPembayaran;
 
-    if (konfirmasiPembayaran == 'y' || konfirmasiPembayaran == 'Y') {
-        double pembayaranBerhasil = prosesPembayaran(totalHarga);
-        if (pembayaranBerhasil >= 0) {
-            cout << "Pesanan Anda berhasil diproses. Terima kasih!" << endl;
-        } else {
-            cout << "Pesanan dibatalkan karena pembayaran gagal." << endl;
+    do {
+        cout << "Apakah Anda ingin melanjutkan ke pembayaran? (1 untuk Ya, 2 untuk Mengurangi Pesanan, 3 untuk nambah, 4 untuk batal): ";
+        konfirmasiPembayaran = mintaPilihan();
+        switch (konfirmasiPembayaran) {
+            case 1:
+                
+                i++;
+                
+                queue++;
+                pembelian[i].queue = queue;
+                tampilkanRincianPembelian(pembelian, jumlahPembelian);
+                cout << "Queue number: " << pembelian[i].queue << endl;
+                cout << "Total harga pesanan Anda: Rp" << totalHarga << endl;
+                break;
+
+            case 2:
+                penguranganKeranjang(pembelian, jumlahPembelian, menu);
+                tampilkanRincianPembelian(pembelian, jumlahPembelian);
+                cout << "Total harga setelah update: Rp" << totalHarga << endl;
+
+                break;
+
+            case 3:
+                goto ulang;
+                break;
+
+            case 4:
+                cout << "Pesanan dibatalkan." << endl;
+                return 0;
+
+            default:
+                cout << "Pilihan tidak valid." << endl;
+                break;
         }
-    } else {
-        cout << "Pesanan dibatalkan." << endl;
-    }
-
+        
+    } while (konfirmasiPembayaran != 1 && konfirmasiPembayaran != 4);
     return 0;
 }
