@@ -21,14 +21,6 @@ void resetPembelian() {
     }
 }
 
-void kembalikanStok(MenuItem menu[], PembelianItem pembelian[], int jumlahPembelian) {
-    for (int i = 0; i < jumlahPembelian; i++) {
-        int id = pembelian[i].Id;
-        int jumlahPesanan = pembelian[i].jumlah;
-        menu[id].stok += jumlahPesanan; // Mengembalikan stok ke menu
-    }
-}
-
 int mintaPilihan() {
     int pilihan;
     while (true) {

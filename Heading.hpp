@@ -30,6 +30,6 @@ void penguranganKeranjang(PembelianItem pembelian[], int jumlahPembelian, MenuIt
 void pegawai(MenuItem menu[], int ukuran, int pilihan);
 void customer(MenuItem menu[], int ukuran, int pilihan);
 int mintaPilihan();
-
+void kembalikanStok(MenuItem menu[], PembelianItem pembelian[], int jumlahPembelian);
 
 #endif
