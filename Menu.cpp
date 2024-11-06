@@ -10,6 +10,7 @@ void tampilkanMenu(MenuItem menu[], int ukuran) {
     for (int i = 0; i < ukuran; i++) {
         cout << i + 1 << ". " << menu[i].nama << " - Rp" << menu[i].harga << " Stok tersisa: "<< menu[i].stok << endl;
     }
+    cout << "-------------------------------------------------------------------" << endl ; 
 }
 
 

@@ -65,17 +65,18 @@ int main() {
             if (pilihan > 0 && pilihan <= ukuran) {
                 customer(menu, ukuran, pilihan);
             } else if (pilihan == 0){
-               cout << "Silahkan Lanjut ke menu pembayaran" << endl;
                cout << "----------------------------------" << endl;
+               cout << "Silahkan Lanjut ke menu pembayaran" << endl;
             }else {
                 cout << "Pilihan tidak valid, coba lagi." << endl;
             }
         } while (pilihan != 0);
     }
-
+// ini sampai bawah masukin file pembayaran
     tampilkanRincianPembelian(pembelian, jumlahPembelian);
-    cout << "----------------------------" << endl ;
-    cout << "Total harga pesanan Anda: Rp" << totalHarga << endl;
+    cout << endl;
+    cout << "Total harga pesanan Anda: Rp." << totalHarga << endl;
+    cout << "------------------------------------------------" << endl;
     cout << "Apakah Anda ingin melanjutkan ke pembayaran? (y/n): ";
     cin >> konfirmasiPembayaran;
 
