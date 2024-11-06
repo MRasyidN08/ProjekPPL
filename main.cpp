@@ -56,6 +56,7 @@ int main() {
         } while (pilihan != 0);
         goto start;
     } else if (orang == 'c'){
+        next:
         do {
             cout << setw(40) <<  "------ Selamat Datang Di Mcdonald ------" << endl;
             tampilkanMenu(menu, ukuran);
@@ -73,22 +74,24 @@ int main() {
         } while (pilihan != 0);
     }
 // ini sampai bawah masukin file pembayaran
-    tampilkanRincianPembelian(pembelian, jumlahPembelian);
-    cout << endl;
     cout << "Total harga pesanan Anda: Rp." << totalHarga << endl;
     cout << "------------------------------------------------" << endl;
     cout << "Apakah Anda ingin melanjutkan ke pembayaran? (y/n): ";
     cin >> konfirmasiPembayaran;
 
     if (konfirmasiPembayaran == 'y' || konfirmasiPembayaran == 'Y') {
-        double pembayaranBerhasil = prosesPembayaran(totalHarga);
-        if (pembayaranBerhasil >= 0) {
-            cout << "Pesanan Anda berhasil diproses. Terima kasih!" << endl;
-        } else {
-            cout << "Pesanan dibatalkan karena pembayaran gagal." << endl;
-        }
+        int i;
+        i++;
+        int queue = 0;
+        queue++;
+        pembelian[i].queue = queue;
+        tampilkanRincianPembelian(pembelian, jumlahPembelian);
+        cout << endl;
+        cout << "Queue number: " << pembelian[i].queue << endl;
+        cout << "Total harga pesanan Anda: Rp" << totalHarga << endl;
     } else {
         cout << "Pesanan dibatalkan." << endl;
+        goto next;
     }
 
     return 0;

@@ -15,6 +15,7 @@ struct PembelianItem {
     string nama;
     int jumlah;
     double hargaTotal;
+    int queue;
 };
 
 void tampilkanMenu(MenuItem menu[], int ukuran);
