@@ -13,6 +13,22 @@ int queue = 0;
 int i;
 char statusMenu;
 
+void resetPembelian() {
+    jumlahPembelian = 0;
+    totalHarga = 0;
+    for (int i = 0; i < 10; i++) {
+        pembelian[i] = PembelianItem{};
+    }
+}
+
+void kembalikanStok(MenuItem menu[], PembelianItem pembelian[], int jumlahPembelian) {
+    for (int i = 0; i < jumlahPembelian; i++) {
+        int id = pembelian[i].Id;
+        int jumlahPesanan = pembelian[i].jumlah;
+        menu[id].stok += jumlahPesanan; // Mengembalikan stok ke menu
+    }
+}
+
 int mintaPilihan() {
     int pilihan;
     while (true) {
@@ -73,7 +89,8 @@ int main() {
                      cout << "Tekan (y) untuk kembali ke menu : ";
                     cin >> statusMenu;
                     if (statusMenu == 'y') {
-                         goto ulang; // Kembali ke menu jika input adalah 'y'
+                        resetPembelian();
+                        goto ulang; // Kembali ke menu jika input adalah 'y'
                     }
                 } while (statusMenu != 'y'); // Ulangi sampai statusMenu adalah 'y'
             break;        
@@ -90,7 +107,9 @@ int main() {
 
             case 4:
                 cout << "Pesanan dibatalkan." << endl;
-                return 0;
+                kembalikanStok(menu, pembelian, jumlahPembelian);
+                resetPembelian();
+                goto ulang;
             default:
                 cout << "Pilihan tidak valid." << endl;
                 break;
