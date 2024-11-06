@@ -15,7 +15,7 @@ void customer(MenuItem menu[], int ukuran, int pilihan) {
         pilihan = mintaPilihan();
         if (pilihan > 0 && pilihan <= ukuran) {
             if (menu[pilihan - 1].stok != 0) {
-                cout << "Silahkan masukkan jumlah " << menu[pilihan - 1].nama << " yang ingin Anda pesan: ";
+                cout << "Silahkan masukkan jumlah " << menu[pilihan - 1].nama << " yang ingin Anda pesan : ";
                 cin >> jumlahItem;
                 if (jumlahItem > menu[pilihan - 1].stok) {
                     cout << "Maaf stok tidak tersedia" << endl;
@@ -45,7 +45,7 @@ void pegawai(MenuItem menu[], int ukuran, int pilihan) {
         cout << "Pilih item dari menu (masukkan nomor item, 0 untuk selesai) : " ;
         pilihan = mintaPilihan();
         if (pilihan > 0 && pilihan <= ukuran) {
-            cout << "Silahkan tambahkan jumlah stok menu: ";
+            cout << "Silahkan tambahkan jumlah stok menu : ";
             cin >> jumlahItem;
             menu[pilihan - 1].stok += jumlahItem;
         } else if (pilihan == 0) {

@@ -15,13 +15,13 @@ void tampilkanMenu(MenuItem menu[], int ukuran) {
 
 void penguranganKeranjang(PembelianItem pembelian[], int jumlahPembelian, MenuItem menu[]) {
     int nomorItem, jumlahPengurangan;
-    cout << "Masukkan nomor item yang ingin dikurangi: ";
+    cout << "Masukkan nomor item yang ingin dikurangi : ";
     cin >> nomorItem;
 
     if (nomorItem > 0 && nomorItem <= jumlahPembelian) {
         PembelianItem &item = pembelian[nomorItem - 1];
 
-        cout << "Jumlah yang ingin dikurangi dari " << item.nama << ": ";
+        cout << "Jumlah yang ingin dikurangi dari " << item.nama << " : ";
         cin >> jumlahPengurangan;
 
         if (jumlahPengurangan > 0 && jumlahPengurangan <= item.jumlah) {
