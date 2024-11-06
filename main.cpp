@@ -63,7 +63,7 @@ int main() {
     cout << "----------------------------------------------------------------------------" << endl;
 
     do {
-        cout << " 1 Pembayaran\n 2 Mengurangi Pesanan\n 3 Menambah Pesanan\n 4 Membatalkan Pesnaan\n ";
+        cout << " 1 Pembayaran\n 2 Mengurangi Pesanan\n 3 Menambah Pesanan\n 4 Membatalkan Pesanan\n ";
         cout << "Silahkan konfirmasi pesanan : " ;
         konfirmasiPembayaran = mintaPilihan();
         switch (konfirmasiPembayaran) {
@@ -71,6 +71,8 @@ int main() {
                 i++;
                 queue++;
                 pembelian[i].queue = queue;
+                cout << endl;
+                tampilkanRincianPembelian(pembelian, jumlahPembelian);
                 cout << endl;
                 cout << "----------------------------------------------------------------------------" << endl;
                 cout << "Queue number : " << pembelian[i].queue << endl;
