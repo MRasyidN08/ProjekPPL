@@ -66,7 +66,7 @@ int main() {
                 tampilkanRincianPembelian(pembelian, jumlahPembelian);
                 cout << "Queue number: " << pembelian[i].queue << endl;
                 cout << "Total harga pesanan Anda: Rp" << totalHarga << endl;
-                break;
+                goto ulang;
 
             case 2:
                 penguranganKeranjang(pembelian, jumlahPembelian, menu);

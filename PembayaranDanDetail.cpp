@@ -21,7 +21,3 @@ void tampilkanRincianPembelian(PembelianItem pembelian[], int jumlahPembelian) {
 
     cout << "------------------------------------------------" << endl;
 }
-
-void penguranganKeranjang(PembelianItem pembelian[], int jumlahPembelian) {
-
-}
