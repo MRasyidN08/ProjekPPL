@@ -23,4 +23,7 @@ void isiMenu(MenuItem menu[], int& ukuran);
 void GetStock(MenuItem menu[]);
 void tampilkanRincianPembelian(PembelianItem pembelian[], int jumlahPembelian);
 
+void pegawai(MenuItem menu[], int ukuran, int pilihan);
+void customer(MenuItem menu[], int ukuran, int pilihan);
+
 #endif
